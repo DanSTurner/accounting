@@ -1,7 +1,8 @@
+require './lib/expense.rb'
+
 class Cli
   def self.run
-    self.say("What is the amount?")
-    expense = Expense.new(amount: get_amount)
+    expense = Expense.new(amount: get_amount, description: get_description)
     expense.save
   end
 
@@ -10,10 +11,12 @@ class Cli
   end
 
   def self.get_amount
+    self.say("What is the amount?")
     gets.strip.to_i
   end
 
   def self.get_description
+    self.say("What is the description?")
     gets.strip
   end
 
